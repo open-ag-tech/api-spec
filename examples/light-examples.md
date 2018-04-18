@@ -1,9 +1,9 @@
 In these examples, we are going to assume the following...  
 
 * There are several pre-defined zones in the greenhouse...  
-gh1-zone1  
-gh1-zone2  
-gh1-zone3  
+** gh1-zone1  
+** gh1-zone2  
+** gh1-zone3  
 * There are several sensors deployed in zone 1...  
 ** LMG-85  
 ** LMG-86  
