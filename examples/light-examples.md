@@ -46,13 +46,14 @@ POST www.climatecontrol.com/agroapi/v1/lights/locations/gh1-zone1/measurements?t
   "light": "8.7"
 }]
 ```
-**Response**
-*HTTP status:* 200
+**Response**  
+HTTP status 200  
 
 ## Light controller pushes measurements for LMG-85 to the climate controller   
 ```
 POST www.climatecontrol.com/agroapi/v1/lights/devices/LMG-85/measurements?token=FA68B23DD511F5A2
 ```
+**Request**  
 ```json
 {
   "timestamp": "2018-01-25_04-56-05_UTC",
@@ -65,8 +66,8 @@ POST www.climatecontrol.com/agroapi/v1/lights/devices/LMG-85/measurements?token=
   "light": "8.7"
 }
 ```
-**Response**
-*HTTP status:* 200
+**Response**  
+HTTP status 200  
 
 ## Light controller pushes the status for LMG-85 to the climate controller  
 ```
@@ -86,8 +87,8 @@ POST www.climatecontrol.com/agroapi/v1/lights/devices/LMG-85/status?token=FA68B2
 ```
 GET www.lightcontrol.com/agroapi/v1/lights/locations/gh1-zone1/measurements?token=FA68B23DD511F5A2
 ```
-**Response**
-*HTTP status:* 200
+**Response**  
+HTTP status 200  
 ```json
 [{
   "deviceid": "LMG-85",
@@ -115,8 +116,8 @@ GET www.lightcontrol.com/agroapi/v1/lights/locations/gh1-zone1/measurements?toke
 ```
 GET /agroapi/v1/lights/devices/[device_id]/measurements?token=FA68B23DD511F5A2
 ```
-**Response**
-*HTTP status:* 200
+**Response**  
+HTTP status 200  
 ```json
 {
   "timestamp": "2018-01-25_04-56-05_UTC",
@@ -133,15 +134,137 @@ GET /agroapi/v1/lights/devices/[device_id]/measurements?token=FA68B23DD511F5A2
 ```
 GET /agroapi/v1/lights/devices/LMG-85/status?token=FA68B23DD511F5A2
 ```
-**Response**
-*HTTP status:* 200
+**Response**  
+HTTP status 200  
 ```json
 {
   "timestamp": "2018-01-25_04-56-05_UTC",
   "status": "off"
 }
 ```
+## Climate controller pushes a common configuration to all fixtures within zone gh1-zone1   
+```
+POST www.lightcontrol.com/agroapi/v1/lights/locations/gh1-zone1/configuration?token=FA68B23DD511F5A2
+```
+**Request**  
+```json
+{
+  "channels": [{
+    "id": "1",
+    "low_nm": "380",
+    "high_nm": "450"
+  },{
+    "id": "2",
+    "low_nm": "451",
+    "high_nm": "495"
+  },{
+    "id": "3",
+    "low_nm": "496",
+    "high_nm": "570"
+  },{
+    "id": "4",
+    "low_nm": "571",
+    "high_nm": "590"
+  },{
+    "id": "5",
+    "low_nm": "591",
+    "high_nm": "620"
+  },{
+    "id": "6",
+    "low_nm": "621",
+    "high_nm": "750"
+  }]
+}
+```
+**Response**  
+HTTP status 200  
 
-### Sensor Configuration
-### Control Configuration
-### Control Commands
+## Climate controller queries the configuration of all fixtures within zone gh1-zone1   
+```
+GET www.lightcontrol.com/agroapi/v1/lights/locations/gh1-zone1/configuration?token=FA68B23DD511F5A2
+```
+**Response**  
+HTTP status 200  
+```json
+[{
+  "deviceid": "FIX-23",
+  "channels": [{
+    "id": "1",
+    "low_nm": "380",
+    "high_nm": "450"
+  },{
+    "id": "2",
+    "low_nm": "451",
+    "high_nm": "495"
+  },{
+    "id": "3",
+    "low_nm": "496",
+    "high_nm": "570"
+  },{
+    "id": "4",
+    "low_nm": "571",
+    "high_nm": "590"
+  },{
+    "id": "5",
+    "low_nm": "591",
+    "high_nm": "620"
+  },{
+    "id": "6",
+    "low_nm": "621",
+    "high_nm": "750"
+  },{
+  "deviceid": "FIX-24",
+  "channels": [{
+    "id": "1",
+    "low_nm": "380",
+    "high_nm": "450"
+  },{
+    "id": "2",
+    "low_nm": "451",
+    "high_nm": "495"
+  },{
+    "id": "3",
+    "low_nm": "496",
+    "high_nm": "570"
+  },{
+    "id": "4",
+    "low_nm": "571",
+    "high_nm": "590"
+  },{
+    "id": "5",
+    "low_nm": "591",
+    "high_nm": "620"
+  },{
+    "id": "6",
+    "low_nm": "621",
+    "high_nm": "750"
+  },{
+  "deviceid": "FIX-25",
+  "channels": [{
+    "id": "1",
+    "low_nm": "380",
+    "high_nm": "450"
+  },{
+    "id": "2",
+    "low_nm": "451",
+    "high_nm": "495"
+  },{
+    "id": "3",
+    "low_nm": "496",
+    "high_nm": "570"
+  },{
+    "id": "4",
+    "low_nm": "571",
+    "high_nm": "590"
+  },{
+    "id": "5",
+    "low_nm": "591",
+    "high_nm": "620"
+  },{
+    "id": "6",
+    "low_nm": "621",
+    "high_nm": "750"
+  }]
+}
+```
+
