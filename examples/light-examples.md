@@ -190,81 +190,21 @@ HTTP status 200
   "deviceid": "FIX-23",
   "channels": [{
     "id": "1",
-    "low_nm": "380",
-    "high_nm": "450"
-  },{
-    "id": "2",
-    "low_nm": "451",
-    "high_nm": "495"
-  },{
-    "id": "3",
-    "low_nm": "496",
-    "high_nm": "570"
-  },{
-    "id": "4",
-    "low_nm": "571",
-    "high_nm": "590"
-  },{
-    "id": "5",
-    "low_nm": "591",
-    "high_nm": "620"
-  },{
-    "id": "6",
-    "low_nm": "621",
-    "high_nm": "750"
-  },{
+    "low_nm": "100",
+    "high_nm": "349"
+  }]},{
   "deviceid": "FIX-24",
   "channels": [{
     "id": "1",
-    "low_nm": "380",
-    "high_nm": "450"
-  },{
-    "id": "2",
-    "low_nm": "451",
-    "high_nm": "495"
-  },{
-    "id": "3",
-    "low_nm": "496",
-    "high_nm": "570"
-  },{
-    "id": "4",
-    "low_nm": "571",
-    "high_nm": "590"
-  },{
-    "id": "5",
-    "low_nm": "591",
-    "high_nm": "620"
-  },{
-    "id": "6",
-    "low_nm": "621",
+    "low_nm": "350",
     "high_nm": "750"
-  },{
+  }]},{
   "deviceid": "FIX-25",
   "channels": [{
-    "id": "1",
-    "low_nm": "380",
-    "high_nm": "450"
-  },{
-    "id": "2",
-    "low_nm": "451",
-    "high_nm": "495"
-  },{
-    "id": "3",
-    "low_nm": "496",
-    "high_nm": "570"
-  },{
-    "id": "4",
-    "low_nm": "571",
-    "high_nm": "590"
-  },{
-    "id": "5",
-    "low_nm": "591",
-    "high_nm": "620"
-  },{
     "id": "6",
-    "low_nm": "621",
-    "high_nm": "750"
+    "low_nm": "751",
+    "high_nm": "1000"
   }]
-}
+}]
 ```
 
