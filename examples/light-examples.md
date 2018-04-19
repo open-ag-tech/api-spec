@@ -1,22 +1,85 @@
-In these examples, we are going to assume the following...  
+In these examples, we are going to assume that a single greenhouse is being outfitted with a lighting system that uses a wifi-enabled lighting controller (reachable at www.lightcontrol.com).  
 
-* There are several pre-defined zones in the greenhouse...  
-** gh1-zone1  
-** gh1-zone2  
-** gh1-zone3  
-* There are several sensors deployed in zone 1...  
-** LMG-85  
-** LMG-86  
-** LMG-87  
-* There are several light fixtures deployed in zone 1...  
-** FIX-23  
-** FIX-24  
-** FIX-25  
-* The other 2 zones the same number of sensors and fixtures as zone 1  
-* An API token has been assigned for authentication...  
-** FA68B23DD511F5A2  
-* The light controller is reachable at www.lightcontrol.com
-* The climate controller is reachable at www.climatecontrol.com  
+The greenhouse is also using a climate control system (reachable at www.climatecontrol.com) that needs to integrate with the lighting system.  
+
+An API token (FA68B23DD511F5A2) has been assigned for integration.  
+
+During planning, the greenhouse has been divided into the following zones...  
+* gh1-zone1  
+* gh1-zone2  
+* gh1-zone3  
+* gh1-zone4  
+* gh1-zone5  
+
+There are several sensors that have been registered with the lighting control system and are being deployed throughout the zones...  
+* LMG-81  
+* LMG-82  
+* LMG-83  
+* LMG-84  
+* LMG-85  
+* LMG-86  
+* LMG-87  
+* LMG-88  
+* LMG-89  
+
+There are several light fixtures that have been deployed and registered with the lighting control system but they are not yet assigned to zones...  
+* FIX-20  
+* FIX-21  
+* FIX-22  
+* FIX-23  
+* FIX-24  
+* FIX-25  
+* FIX-26  
+* FIX-27  
+* FIX-28  
+* FIX-29  
+* FIX-30  
+* FIX-31  
+
+## Get all fixture IDs and assign them to zones
+```
+GET www.lightcontrol.com/agroapi/v1/lights/fixtures?token=FA68B23DD511F5A2
+
+//Response
+{
+  "fixtures": [
+    "FIX-20",
+    "FIX-21",
+    "FIX-22",
+    "FIX-23",
+    "FIX-24",
+    "FIX-25",
+    "FIX-26",
+    "FIX-27",
+    "FIX-28",
+    "FIX-29",
+    "FIX-30",
+    "FIX-31"
+    ]
+}
+
+POST www.lightcontrol.com/agroapi/v1/lights/zones?token=FA68B23DD511F5A2
+
+// Request
+{
+  "zones": [{
+    "id": "gh1-zone1",
+    "fixtures": ["FIX-21","FIX-22"]
+    },{
+    "id": "gh1-zone2",
+    "fixtures": ["FIX-23","FIX-24","FIX-25"]
+    },{
+    "id": "gh1-zone3",
+    "fixtures": ["FIX-26"]
+    },{
+    "id": "gh1-zone4",
+    "fixtures": ["FIX-27","FIX-28"]
+    },{
+    "id": "gh1-zone5",
+    "fixtures": ["FIX-29","FIX-30","FIX-31"]
+    }]
+}
+```
 
 ## Light controller pushes measurements for gh1-zone1 to the climate controller  
 ```
