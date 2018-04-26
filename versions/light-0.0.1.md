@@ -2,6 +2,8 @@
 
 This specification is intended to define a standardized way of communicating with lighting systems for real-time monitoring and control and to allow data collection between control systems and / or peripheral devices.
 
+**NOTE:** need to add API to query last-known update...identify what was done and when (and by whom?)
+
 # Scope
 
 The scope of this document is limited to providing a payload structure and endpoint type definitions to allow basic control and data acquisition. The addition of product specific features is left to the implementer, but to be in compliance the product must support the basic set of features specified below.
