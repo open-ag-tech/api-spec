@@ -16,79 +16,79 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/info  
 ```
-Returns [Info](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#info)  
+Returns [Info](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#info)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/version  
 ```
-Returns [Version](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#version)  
+Returns [Version](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#version)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/location  
 ```
-Returns [Location](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#location)  
+Returns [Location](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#location)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/ppf  
 ```
-Returns [Light PPF](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#light-ppf)  
+Returns [Light PPF](https://github.com/open-ag-tech/api-spec/blob/master/versions/light-0.0.1.md#light-ppf)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/ppfd  
 ```
-Returns [Light PPFD](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#light-ppfd)  
+Returns [Light PPFD](https://github.com/open-ag-tech/api-spec/blob/master/versions/light-0.0.1.md#light-ppfd)  
 
 ### Talking to all sensors
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/info  
 ```
-Returns an array of [Info](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#info)  
+Returns an array of [Info](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#info)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/version  
 ```
-Returns an array of [Version](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#version)  
+Returns an array of [Version](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#version)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/location  
 ```
-Returns an array of [Location](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#location)  
+Returns an array of [Location](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#location)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/ppf  
 ```
-Returns an array of [Light PPF](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#light-ppf)  
+Returns an array of [Light PPF](https://github.com/open-ag-tech/api-spec/blob/master/versions/light-0.0.1.md#light-ppf)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/ppfd  
 ```
-Returns an array of [Light PPFD](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#light-ppfd)  
+Returns an array of [Light PPFD](https://github.com/open-ag-tech/api-spec/blob/master/versions/light-0.0.1.md#light-ppfd)  
 
 ### Talking to all sensors in a zone
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/sensors/info  
 ```
-Returns an array of [Info](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#info)  
+Returns an array of [Info](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#info)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/sensors/version  
 ```
-Returns an array of [Version](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#version)  
+Returns an array of [Version](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#version)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/sensors/location  
 ```
-Returns an array of [Location](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#location)  
+Returns an array of [Location](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#location)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/sensors/ppf  
 ```
-Returns an array of [Light PPF](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#light-ppf)  
+Returns an array of [Light PPF](https://github.com/open-ag-tech/api-spec/blob/master/versions/light-0.0.1.md#light-ppf)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/sensors/ppfd  
 ```
-Returns an array of [Light PPFD](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#light-ppfd)  
+Returns an array of [Light PPFD](https://github.com/open-ag-tech/api-spec/blob/master/versions/light-0.0.1.md#light-ppfd)  
 
 ### Light PPF
 | Name      | Description                      | Unit     |
@@ -121,85 +121,85 @@ Returns an array of [Light PPFD](https://github.com/open-ag-tech/api-spec/blob/m
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/info
 ```
-Returns [Info](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#info)  
+Returns [Info](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#info)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/version  
 ```
-Returns [Version](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#version)  
+Returns [Version](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#version)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/location
 ```
-Returns [Location](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#location)  
+Returns [Location](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#location)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/config
 ```
-Returns [Fixture Configuration](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#fixture-configuration)  
+Returns [Fixture Configuration](https://github.com/open-ag-tech/api-spec/blob/master/versions/light-0.0.1.md#fixture-configuration)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/power
 ```
-Returns [Fixture Power](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#fixture-power)  
+Returns [Fixture Power](https://github.com/open-ag-tech/api-spec/blob/master/versions/light-0.0.1.md#fixture-power)  
 
 ### Talking to all fixtures
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/info
 ```
-Returns an array of [Info](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#info)  
+Returns an array of [Info](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#info)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/version  
 ```
-Returns an array of [Version](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#version)  
+Returns an array of [Version](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#version)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/location
 ```
-Returns an array of [Location](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#location)  
+Returns an array of [Location](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#location)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/config
 ```
-Returns an array of [Fixture Configuration](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#fixture-configuration)  
+Returns an array of [Fixture Configuration](https://github.com/open-ag-tech/api-spec/blob/master/versions/light-0.0.1.md#fixture-configuration)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/power
 ```
-Returns an array of [Fixture Power](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#fixture-power)  
+Returns an array of [Fixture Power](https://github.com/open-ag-tech/api-spec/blob/master/versions/light-0.0.1.md#fixture-power)  
 
 ### Talking to all fixtures in a zone
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/info
 ```
-Returns an array of [Info](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#info)  
+Returns an array of [Info](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#info)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixture/[fixtureid]/version  
 ```
-Returns an array of [Version](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#version)  
+Returns an array of [Version](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#version)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/location
 ```
-Returns an array of [Location](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#location)  
+Returns an array of [Location](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#location)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/config
 ```
-Returns an array of [Fixture Configuration](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#fixture-configuration)  
+Returns an array of [Fixture Configuration](https://github.com/open-ag-tech/api-spec/blob/master/versions/light-0.0.1.md#fixture-configuration)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/power
 ```
-Returns an array of [Fixture Power](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#fixture-power)  
+Returns an array of [Fixture Power](https://github.com/open-ag-tech/api-spec/blob/master/versions/light-0.0.1.md#fixture-power)  
 
 ### Fixture Configuration
 | Name     | Description                     | Unit  |
 | -------- | ------------------------------- | ----- |
 | id       | Unique id of the fixture        | uid   |
-| channels | array of channel configurations | [Channel Configuration](https://github.com/open-ag-tech/api-spec/blob/master/versions/0.0.1.md#channel-configuration) |
+| channels | array of channel configurations | [Channel Configuration](https://github.com/open-ag-tech/api-spec/blob/master/versions/light-0.0.1.md#channel-configuration) |
 ### Channel Configuration
 | Name      | Description                           | Unit  |
 | --------- | ------------------------------------- | ----- |
