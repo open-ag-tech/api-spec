@@ -1,4 +1,4 @@
-# api-spec
+# API Specification
 This directory contains the various parts of the open API specification for exchanging data and operational control in indoor agricultural environments.  
 
 The specification is divided into the following sub-sections to make it easier to follow...
