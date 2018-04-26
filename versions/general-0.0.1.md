@@ -114,7 +114,7 @@ Here is an example of a properly formatted timestamp…
 # Common Structures
 Many concepts use the same data structures to report their essential information. Those structures are listed here.  
 
-## Info
+## Info Data
 | Name        | Description                                     | Unit |
 | ----------- | ----------------------------------------------- | ---- |
 | id          | ID of the entity                                | uid  |
@@ -122,7 +122,7 @@ Many concepts use the same data structures to report their essential information
 | compartment | ID of the compartment that contains this entity | uid  |
 | facility    | ID of the facility that contains this entity    | uid  |
 
-## Version
+## Version Data
 | Name    | Description                                | Unit |
 | ------- | ------------------------------------------ | ---- |
 | id      | unique id of the device                    | uid  |
@@ -130,7 +130,7 @@ Many concepts use the same data structures to report their essential information
 | model   | Model number of this device                | text |
 | version | Version number of this device              | text |
 
-## Location
+## Location Data
 | Name | Description                                             | Unit |
 | ---- | ------------------------------------------------------- | ---- |
 | id   | Unique id of this entity                                | uid  |
@@ -138,7 +138,7 @@ Many concepts use the same data structures to report their essential information
 | y    | y coordinate of this entity within its parent container | m    |
 | z    | z coordinate of this entity within its parent container | m    |
 
-## Dimensions
+## Dimension Data
 | Name   | Description             | Unit |
 | ------ | ----------------------- | ---- |
 | id     | Unique id of the entity | uid  |
