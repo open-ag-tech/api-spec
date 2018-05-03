@@ -6,17 +6,17 @@
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/info  
 ```
-Returns [Info](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#info-data)  
+Returns [Info](README.md#info-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/version  
 ```
-Returns [Version](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#version-data)  
+Returns [Version](README.md#version-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/location  
 ```
-Returns [Location](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#location-data)  
+Returns [Location](README.md#location-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/ppf  
@@ -32,17 +32,17 @@ Returns [Light PPFD](https://github.com/open-ag-tech/api-spec/blob/master/versio
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/info  
 ```
-Returns an array of [Info](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#info-data)  
+Returns an array of [Info](README.md#info-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/version  
 ```
-Returns an array of [Version](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#version-data)  
+Returns an array of [Version](README.md#version-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/location  
 ```
-Returns an array of [Location](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#location-data)  
+Returns an array of [Location](README.md#location-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/ppf  
@@ -58,17 +58,17 @@ Returns an array of [Light PPFD](https://github.com/open-ag-tech/api-spec/blob/m
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/sensors/info  
 ```
-Returns an array of [Info](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#info-data)  
+Returns an array of [Info](README.md#info-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/sensors/version  
 ```
-Returns an array of [Version](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#version-data)  
+Returns an array of [Version](README.md#version-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/sensors/location  
 ```
-Returns an array of [Location](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#location-data)  
+Returns an array of [Location](README.md#location-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/sensors/ppf  
@@ -111,17 +111,17 @@ Returns an array of [Light PPFD](https://github.com/open-ag-tech/api-spec/blob/m
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/info
 ```
-Returns [Info](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#info-data)  
+Returns [Info](README.md#info-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/version  
 ```
-Returns [Version](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#version-data)  
+Returns [Version](README.md#version-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/location
 ```
-Returns [Location](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#location-data)  
+Returns [Location](README.md#location-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/config
@@ -137,17 +137,17 @@ Returns [Fixture Power](https://github.com/open-ag-tech/api-spec/blob/master/ver
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/info
 ```
-Returns an array of [Info](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#info-data)  
+Returns an array of [Info](README.md#info-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/version  
 ```
-Returns an array of [Version](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#version-data)  
+Returns an array of [Version](README.md#version-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/location
 ```
-Returns an array of [Location](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#location-data)  
+Returns an array of [Location](README.md#location-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/config
@@ -163,17 +163,17 @@ Returns an array of [Fixture Power](https://github.com/open-ag-tech/api-spec/blo
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/info
 ```
-Returns an array of [Info](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#info-data)  
+Returns an array of [Info](README.md#info-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixture/[fixtureid]/version  
 ```
-Returns an array of [Version](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#version-data)  
+Returns an array of [Version](README.md#version-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/location
 ```
-Returns an array of [Location](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#location-data)  
+Returns an array of [Location](README.md#location-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/config
