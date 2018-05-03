@@ -97,7 +97,7 @@ Returns an array of [Light PPFD](https://github.com/open-ag-tech/api-spec/blob/m
 | --------- | -------------------------------- | -------- |
 | id        | Unique id of the device          | uid      |
 | timestamp | UTC timestamp of the measurement | datetime |
-| red       | Level of red spectrum light      | PPF      | 
+| red       | Level of red spectrum light      | PPF      |
 | blue      | Level of blue spectrum light     | PPF      |
 | green     | Level of green spectrum light    | PPF      |
 | uv        | Level of ultraviolet light       | PPF      |
