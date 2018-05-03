@@ -1,16 +1,4 @@
-# Purpose
-
-This specification is intended to define a standardized way of communicating with lighting systems for real-time monitoring and control and to allow data collection between control systems and / or peripheral devices.
-
-**NOTE:** need to add API to query last-known update...identify what was done and when (and by whom?)
-
-# Scope
-
-The scope of this document is limited to providing a payload structure and endpoint type definitions to allow basic control and data acquisition. The addition of product specific features is left to the implementer, but to be in compliance the product must support the basic set of features specified below.
-
-# Definitions
-
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119.
+# Examples: Lights
 
 # Endpoints
 ## Sensors
@@ -97,7 +85,7 @@ Returns an array of [Light PPFD](https://github.com/open-ag-tech/api-spec/blob/m
 | --------- | -------------------------------- | -------- |
 | id        | Unique id of the device          | uid      |
 | timestamp | UTC timestamp of the measurement | datetime |
-| red       | Level of red spectrum light      | PPF      | 
+| red       | Level of red spectrum light      | PPF      |
 | blue      | Level of blue spectrum light     | PPF      |
 | green     | Level of green spectrum light    | PPF      |
 | uv        | Level of ultraviolet light       | PPF      |
