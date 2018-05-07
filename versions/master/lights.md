@@ -1,16 +1,4 @@
-# Purpose
-
-This specification is intended to define a standardized way of communicating with lighting systems for real-time monitoring and control and to allow data collection between control systems and / or peripheral devices.
-
-**NOTE:** need to add API to query last-known update...identify what was done and when (and by whom?)
-
-# Scope
-
-The scope of this document is limited to providing a payload structure and endpoint type definitions to allow basic control and data acquisition. The addition of product specific features is left to the implementer, but to be in compliance the product must support the basic set of features specified below.
-
-# Definitions
-
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119.
+# Examples: Lights
 
 # Endpoints
 ## Sensors
@@ -18,17 +6,17 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/info  
 ```
-Returns [Info](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#info-data)  
+Returns [Info](README.md#info-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/version  
 ```
-Returns [Version](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#version-data)  
+Returns [Version](README.md#version-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/location  
 ```
-Returns [Location](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#location-data)  
+Returns [Location](README.md#location-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/ppf  
@@ -44,17 +32,17 @@ Returns [Light PPFD](https://github.com/open-ag-tech/api-spec/blob/master/versio
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/info  
 ```
-Returns an array of [Info](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#info-data)  
+Returns an array of [Info](README.md#info-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/version  
 ```
-Returns an array of [Version](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#version-data)  
+Returns an array of [Version](README.md#version-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/location  
 ```
-Returns an array of [Location](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#location-data)  
+Returns an array of [Location](README.md#location-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/ppf  
@@ -70,17 +58,17 @@ Returns an array of [Light PPFD](https://github.com/open-ag-tech/api-spec/blob/m
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/sensors/info  
 ```
-Returns an array of [Info](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#info-data)  
+Returns an array of [Info](README.md#info-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/sensors/version  
 ```
-Returns an array of [Version](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#version-data)  
+Returns an array of [Version](README.md#version-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/sensors/location  
 ```
-Returns an array of [Location](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#location-data)  
+Returns an array of [Location](README.md#location-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/sensors/ppf  
@@ -97,7 +85,7 @@ Returns an array of [Light PPFD](https://github.com/open-ag-tech/api-spec/blob/m
 | --------- | -------------------------------- | -------- |
 | id        | Unique id of the device          | uid      |
 | timestamp | UTC timestamp of the measurement | datetime |
-| red       | Level of red spectrum light      | PPF      | 
+| red       | Level of red spectrum light      | PPF      |
 | blue      | Level of blue spectrum light     | PPF      |
 | green     | Level of green spectrum light    | PPF      |
 | uv        | Level of ultraviolet light       | PPF      |
@@ -123,17 +111,17 @@ Returns an array of [Light PPFD](https://github.com/open-ag-tech/api-spec/blob/m
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/info
 ```
-Returns [Info](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#info-data)  
+Returns [Info](README.md#info-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/version  
 ```
-Returns [Version](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#version-data)  
+Returns [Version](README.md#version-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/location
 ```
-Returns [Location](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#location-data)  
+Returns [Location](README.md#location-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/config
@@ -149,17 +137,17 @@ Returns [Fixture Power](https://github.com/open-ag-tech/api-spec/blob/master/ver
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/info
 ```
-Returns an array of [Info](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#info-data)  
+Returns an array of [Info](README.md#info-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/version  
 ```
-Returns an array of [Version](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#version-data)  
+Returns an array of [Version](README.md#version-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/location
 ```
-Returns an array of [Location](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#location-data)  
+Returns an array of [Location](README.md#location-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/config
@@ -175,17 +163,17 @@ Returns an array of [Fixture Power](https://github.com/open-ag-tech/api-spec/blo
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/info
 ```
-Returns an array of [Info](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#info-data)  
+Returns an array of [Info](README.md#info-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixture/[fixtureid]/version  
 ```
-Returns an array of [Version](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#version-data)  
+Returns an array of [Version](README.md#version-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/location
 ```
-Returns an array of [Location](https://github.com/open-ag-tech/api-spec/blob/master/versions/general-0.0.1.md#location-data)  
+Returns an array of [Location](README.md#location-data)  
 
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/config
