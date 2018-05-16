@@ -15,26 +15,37 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 # Endpoints
 ## Sensors
 ### Talking to one sensor
+**Retrieving ID information**  
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/info  
 ```
 Returns [Info](general.md#info-data)  
 
+**Setting ID information**  
+```
+POST http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/info  
+```
+Sends [Info](general.md#info-data)  
+
+**Retrieving version information**  
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/version  
 ```
 Returns [Version](general.md#version-data)  
 
+**Retrieving location information**  
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/location  
 ```
 Returns [Location](general.md#location-data)  
 
+**Retrieving spectrum measurements as PPF**  
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/ppf  
 ```
 Returns [Light PPF](https://github.com/open-ag-tech/api-spec/blob/master/versions/light-0.0.1.md#light-ppf)  
 
+**Retrieving spectrum measurements as PPFD**  
 ```
 GET http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/ppfd  
 ```
