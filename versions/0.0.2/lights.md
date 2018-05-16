@@ -171,82 +171,169 @@ Returns an array of [Light PPFD](lights.md#light-ppfd)
 
 ## Fixtures
 ### Talking to one fixture
+**Retrieving ID information**  
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/info
 ```
 Returns [Info](general.md#info-data)  
 
+**Sending ID information**  
+```
+POST http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/info
+```
+Sends [Info](general.md#info-data)  
+
+**Retrieving version information**  
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/version  
 ```
 Returns [Version](general.md#version-data)  
 
+**Retrieving location information**  
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/location
 ```
 Returns [Location](general.md#location-data)  
 
+**Sending location information**  
+```
+POST http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/location
+```
+Sends [Location](general.md#location-data)  
+
+**Retrieving configuration information**  
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/config
 ```
 Returns [Fixture Configuration](lights.md#fixture-configuration)  
 
+**Sending configuration information**  
+```
+POST http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/config
+```
+Sends [Fixture Configuration](lights.md#fixture-configuration)  
+
+**Retrieving power state information**  
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/power
 ```
 Returns [Fixture Power](lights.md#fixture-power)  
 
+**Sending power state information**  
+```
+POST http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/power
+```
+Sends [Fixture Power](lights.md#fixture-power)  
+
 ### Talking to all fixtures
+**Retrieving ID information**  
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/info
 ```
 Returns an array of [Info](general.md#info-data)  
 
+**Sending ID information**  
+```
+POST http://[domain:port]/agroapi/[version]/lights/fixtures/info
+```
+Sends an array of [Info](general.md#info-data)  
+
+**Retrieving version information**  
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/version  
 ```
 Returns an array of [Version](general.md#version-data)  
 
+**Retrieving location information**  
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/location
 ```
 Returns an array of [Location](general.md#location-data)  
 
+**Sending location information**  
+```
+POST http://[domain:port]/agroapi/[version]/lights/fixtures/location
+```
+Sends an array of [Location](general.md#location-data)  
+
+**Retrieving configuration information**  
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/config
 ```
 Returns an array of [Fixture Configuration](lights.md#fixture-configuration)  
 
+**Sending configuration information**  
+```
+POST http://[domain:port]/agroapi/[version]/lights/fixtures/config
+```
+Sends an array of [Fixture Configuration](lights.md#fixture-configuration)  
+
+**Retrieving power state information**  
 ```
 GET http://[domain:port]/agroapi/[version]/lights/fixtures/power
 ```
 Returns an array of [Fixture Power](lights.md#fixture-power)  
 
+**Sending power state information**  
+```
+POST http://[domain:port]/agroapi/[version]/lights/fixtures/power
+```
+Sends an array of [Fixture Power](lights.md#fixture-power)  
+
 ### Talking to all fixtures in a zone
+**Retrieving ID information**  
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/info
 ```
 Returns an array of [Info](general.md#info-data)  
 
+**Sending ID information**  
+```
+POST http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/info
+```
+Sends an array of [Info](general.md#info-data)  
+
+**Retrieving version information**  
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixture/[fixtureid]/version  
 ```
 Returns an array of [Version](general.md#version-data)  
 
+**Retrieving location information**  
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/location
 ```
 Returns an array of [Location](general.md#location-data)  
 
+**Sending location information**  
+```
+POST http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/location
+```
+Sends an array of [Location](general.md#location-data)  
+
+**Retrieving configuration information**  
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/config
 ```
 Returns an array of [Fixture Configuration](lights.md#fixture-configuration)  
 
+**Sending configuration information**  
+```
+POST http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/config
+```
+Sends an array of [Fixture Configuration](lights.md#fixture-configuration)  
+
+**Retrieving power state information**  
 ```
 GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/power
 ```
 Returns an array of [Fixture Power](lghts.md#fixture-power)  
+
+**Sending power state information**  
+```
+POST http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/power
+```
+Sends an array of [Fixture Power](lghts.md#fixture-power)  
 
 ### Fixture Configuration
 | Name     | Description                     | Unit  |
