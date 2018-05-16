@@ -341,12 +341,13 @@ Sends an array of [Fixture Power](lghts.md#fixture-power)
 | id       | Unique id of the fixture        | uid   |
 | channels | array of channel configurations | [Channel Configuration](lights.md#channel-configuration) |
 ### Channel Configuration
-| Name      | Description                           | Unit  |
-| --------- | ------------------------------------- | ----- |
-| id        | Unique id of the channel              | uid   |
-| lower     | Lower boundary of the frequency range | nm    |
-| upper     | Upper boundary of the frequency range | nm    |
-| intensity | Light intensity                       | %     |
+| Name        | Description                                               | Unit       |
+| ----------- | --------------------------------------------------------- | ---------- |
+| id          | Unique id of the channel                                  | uid        |
+| lo-color    | Lower boundary of the frequency range for a color channel | nm         |
+| hi-color    | Upper boundary of the frequency range for a color channel | nm         |
+| cct         | Color temperature for a white channel                     | K (Kelvin) |
+| intensity   | Light intensity                                           | %          |
 ### Fixture Power
 | Name   | Description                    | Unit          |
 | ------ | ------------------------------ | ------------- |
