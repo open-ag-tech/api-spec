@@ -45,7 +45,7 @@ The interpretation of error codes, including the text describing the error, will
 
 All monitoring data MUST be accompanied by a timestamp in the RFC3339 format.
 
-`YYYY-MM-DDTHH:MM:SS[+8]`
+`YYYY-MM-DDTHH:MM:SS[Z|-HH:MM|+HH:MM]`
 
 Here is an example of a properly formatted timestamp in UTC:
 
