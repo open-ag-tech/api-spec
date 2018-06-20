@@ -43,13 +43,19 @@ The interpretation of error codes, including the text describing the error, will
 
 # Timestamps
 
-All monitoring data MUST be accompanied by a timestamp that includes year, month, day, hour, minute, second, and time zone. The format MUST be as follows…
+All monitoring data MUST be accompanied by a timestamp in the RFC3339 format.
 
-`[year]-[month]-[day]_[hour]-[min]-[sec]_[timezone]`
+`YYYY-MM-DDTHH:MM:SS[+8]`
 
-Here is an example of a properly formatted timestamp…
+Here is an example of a properly formatted timestamp in UTC:
 
-`2018-01-25_04-56-05_UTC`
+`2018-01-25T04:56:05Z`
+
+And the same time in the NZST timezone:
+
+`2018-01-25T04:56:05+12:00`
+
+See [http://pretty-rfc.herokuapp.com/RFC3339] for more information.
 
 # Common Structures
 Many concepts use the same data structures to report their essential information. Those structures are listed here.  
