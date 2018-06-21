@@ -1,49 +1,127 @@
-# Purpose
+## Example Document Snippets
 
-This specification is intended to define a standardized way of communicating with lighting systems for real-time monitoring and control and to allow data collection between control systems and / or peripheral devices.
+```yaml
+/sensors:
+  get:
+    description: Returns all sensors from the system that the user has access to
+    responses:
+      '200':
+        description: A list of sensors.
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Sensor'
+/sensors/{sensorId}:
+  get:
+   summary: Info for a specific sensor
+   operationId: showSensorById
+   tags:
+     - sensors
+   parameters:
+     - name: sensorId
+       in: path
+       required: true
+       description: The id of the sensor to retrieve
+       schema:
+         type: string
+   responses:
+     '200':
+       description: Expected response to a valid request
+       content:
+         application/json:
+           schema:
+             $ref: "#/components/schemas/Sensors"
+     default:
+       description: unexpected error
+       content:
+         application/json:
+           schema:
+             $ref: "#/components/schemas/Error"  
 
-**NOTE:** need to add API to query last-known update...identify what was done and when (and by whom?)
+/sensors/{sensorId}/measurements:
+  get:
+    description: Returns spectrum measurements from a specific sensor
+    parameters:
+      - name: format
+        in: query
+        required: false
+        description: PPF or PPFD
+        schema:
+          type: string
+    responses:
+      '200':
+        description: A list of measurements
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/SpectrumMeasurement'
 
-# Scope
-
-The scope of this document is limited to providing a payload structure and endpoint type definitions to allow basic control and data acquisition. The addition of product specific features is left to the implementer, but to be in compliance the product must support the basic set of features specified below.
-
-# Definitions
-
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119.
-
-# Endpoints
-## Sensors
-### Talking to one sensor
-**Retrieving ID information**  
 ```
-GET http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/info  
-```
-Returns [Info](general.md#info-data)  
 
-**Sending ID information**  
-```
-POST http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/info  
-```
-Sends [Info](general.md#info-data)  
+### Example Schema
 
-**Retrieving version information**  
-```
-GET http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/version  
-```
-Returns [Version](general.md#version-data)  
+Sensor
 
-**Retrieving location information**  
+```yaml
+type: object
+required:
+- id
+properties:
+  name:
+    type: string
+  info:
+    type: string
+  version:
+    type: string
+  location:
+    ***TODO: LOCATION FORMAT*** general.md#location-data
+  age:
+    type: integer
+    format: int32
+    minimum: 0
 ```
-GET http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/location  
-```
-Returns [Location](general.md#location-data)  
 
-**Sending location information**  
+Measurement
+
+```yaml
+type: object
+required:
+- id
+properties:
+  id:
+    description: Unique id of the device         
+    type: string
+  timestamp:
+    description: UTC timestamp of the measurement
+    type: string
+  red:
+    description: Level of red spectrum light     
+    type: string
+  blue:
+    description: Level of blue spectrum light    
+    type: string
+  green:
+    description: Level of green spectrum light   
+    type: string
+  uv:
+    description: Level of ultraviolet light      
+    type: string
+  infrared:
+    description: Level of infrared light         
+    type: string
+  par:
+    description: Level of absorbable light       
+    type: string
+  light:
+    description: Level of all spectrums of light
+    type: string
 ```
-POST http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/location  
-```
-Sends [Location](general.md#location-data)  
+
+## Example requests
 
 **Retrieving spectrum measurements as PPF**  
 ```
@@ -143,31 +221,7 @@ GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/sensors/ppfd
 ```
 Returns an array of [Light PPFD](lights.md#light-ppfd)  
 
-### Light PPF
-| Name      | Description                      | Unit     |
-| --------- | -------------------------------- | -------- |
-| id        | Unique id of the device          | uid      |
-| timestamp | UTC timestamp of the measurement | datetime |
-| red       | Level of red spectrum light      | PPF      |
-| blue      | Level of blue spectrum light     | PPF      |
-| green     | Level of green spectrum light    | PPF      |
-| uv        | Level of ultraviolet light       | PPF      |
-| infrared  | Level of infrared light          | PPF      |
-| par       | Level of absorbable light        | PPF      |
-| light     | Level of all spectrums of light  | PPF      |
 
-### Light PPFD
-| Name      | Description                      | Unit     |
-| --------- | -------------------------------- | -------- |
-| id        | Unique id of the device          | uid      |
-| timestamp | UTC timestamp of the measurement | datetime |
-| red       | Level of red spectrum light      | PPFD     |
-| blue      | Level of blue spectrum light     | PPFD     |
-| green     | Level of green spectrum light    | PPFD     |
-| uv        | Level of ultraviolet light       | PPFD     |
-| infrared  | Level of infrared light          | PPFD     |
-| par       | Level of absorbable light        | PPFD     |
-| light     | Level of all spectrums of light  | PPFD     |
 
 ## Fixtures
 ### Talking to one fixture
