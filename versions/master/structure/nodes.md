@@ -1,7 +1,7 @@
 # Purpose
 
 To provide a standard layout for the OpenAg structure YAML.
- 
+
 # Scope
 
 Defining the structure's nodes, their attributes, and their subattributes.
@@ -9,70 +9,133 @@ Defining the structure's nodes, their attributes, and their subattributes.
 #Nodes
 
 ```YAML
-Nodes:
-  Company:
-    Required:
-      ID: String
-      Name: String
-  Facility:
-    Required:
-      ID: String
-    Optional:
-      Name: String
-      Address: String
-      City: String
-      State: String
-      ZIP: String
-      Size: Integer, Square Meters
-      Length: Decimal, Meters
-      Width: Decimal, Meters
-      Height: Decimal, Meters
-  Zone:
-    Required:
-      ID: String
-      Type: [Compartment, Rack, Table, Level, Tray, AirZone, IrrZone, Row, Column]
-    Optional:
-      Size: Decimal, Square Meters
-      Length: Decimal, Meters
-      Width: Decimal, Meters
-      Height: Decimal, Meters
-      Location: Array, floor-plan bottom (Z) of top-left (X-Y) corner to bottom (Z) of top-left(X-Y) corner, meters #Zones will not always be on the floor. A zone (like a level on a Rack) might be 2 meters tall but 1.5 meters off the ground. The height should be 2 meters and the Z axis should be 1.5.
-      Crop: String
-      Variety: String
-      CropStage: String
-  Device:
-    Required:
-      ID: String
-      Type: [Controller,Sensor]
-      Domain: [Air,Light,Water,TBD] #We'll need to better define these
-    Optional:
-      Location: Array, floor-plan bottom  of top-left corner to bottom of top-left corner, meters
-      Delay: Decimal, seconds #Expect a response after x seconds
-      Control: [Direct,Indirect,RESTful] #Direct control means cutting power to the device. Indirect control means cutting power to a control voltage line. RESTful means a smart device capable of understanding an OpenAg API call.
-      Make: String
-      Model: String
-      Version: String
-      Power: #Device power, not control power
-        Voltage: Integer #maxvoltage, when variable.
-        AC: T/F #True is AC, False is DC
-        Current: Integer #Amperes or VAC, Depending. Load current
-        Inrush: Integer #Amperes or VAC
-        Phase: Integer     
-  Contact:
-    Required:
-      URI: String #Protocol:Address
-      ControlType: [Binary, Digital, Analog]
-    Optional:
-      Name: String
-      Quantity: Integer, Default 1
-      Power: #control power, not device power. A device may draw 15 amps at 110 VAC but have contact/control power of milliamps at 24VAC
-          voltage: Integer #max voltage, when variable.
-          AC: T/F #True is AC, False is DC
-          Current: Integer #Amperes or VAC, Depending. Load current
-          Inrush: Integer #Amperes or VAC
-          Phase: Integer
-          
-          
-          
-          
-      
+
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: OpenAg Farms
+  license:
+    name: MIT
+servers:
+  - url: http:www.openagfarms.com
+paths:
+  /facilities:
+    get:
+      summary: List all facilities and their contents
+    operationId: listFacilities
+      tags:
+        - facilities
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: A paged array of facilities
+          headers:
+            x-next:
+              description: A link to the next page of responses
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Facilities"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Create a facility
+      operationId: create
+      tags:
+        - facilities
+      responses:
+        '201':
+          description: Null response
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    Device:
+      required:
+        - id
+        - name
+        - kind
+        - domain
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        kind:
+          enum: [Controller, Sensor]
+        domain:
+          enum: [Air, Light, Water]
+        location:
+          type: array
+    Zone:
+      required:
+        - id
+        - name
+        - kind
+      properties:
+        id:
+           type: string
+        name:
+          type: string
+        kind:
+          enum: [Compartment, Rack, Table, Level, Tray, AirZone, IrrZone, Row, Column]
+        Device:
+          object:
+          items:
+            $ref: "#/components/schemas/Device"
+    Facility:
+      required:
+        - id
+        - zone
+      properties:
+        id:
+          type: string
+        Zone:
+          type: object
+          items:
+            $ref: "#components/schemas/Zone"
+        name:
+          type: string
+        size:
+          type: integer
+          format: int32
+        height:
+          type: integer
+          format: int32
+        width:
+          type: integer
+          format: int32
+        length:
+          type: integer
+          format: int32
+    Facilities:
+      type: array
+      items:
+        $ref: "#/components/schemas/Facility"
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
