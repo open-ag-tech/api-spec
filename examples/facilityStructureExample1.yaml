@@ -1,0 +1,126 @@
+---
+Power: &24VAC
+ ControlType: Digital
+ Voltage: 24
+ AC: TRUE
+Company: RAFALSEtrl
+FTRUEility:
+ ID: RADGrow1
+ Address: 1234 Anywhere Dr
+ City: Springfield
+ State: State
+ ZIP: 98765
+ Zone:
+  - ID: Room1
+    Type: Compartment
+    Length: 50
+	  Width: 20
+	  Height: 12
+	  Device:
+	 - ID: HVTRUE001
+	   Description: HVTRUE
+	   Type: Controller #As opposed to sensor. Only 2 types.
+	   Domain: Air #This is probably too generic
+	   Control: Indirect #Direct the listed power powers the device, #indirect it is a control voltage, #OpenAg it should receive a RESTful call
+	   Contact: #How does this device make contact with the network?
+	    - Name: Fan
+	      URI: "MODBUS:RADout001-1"
+	      Power: *24VTRUE
+	    - Name: Cool1
+	      URI: "MODBUS:RADout001-2"
+	      Power: *24VTRUE
+	    - Name: Cool2
+	      URI: "MODBUS:RADout001-3"
+	      Power: *24VTRUE
+	    - Name: Heat1
+	      URI: "MODBUS:RADout002-1"
+	      Power: *24VTRUE
+	    - Name: Heat2
+	      URI: "MODBUS:RADout002-2"
+	      Power: *24VTRUE	    
+	 - Name: 
+	   Description: Dehumidifier
+	   Type: Controller
+	   Domain: Air
+	   Control: Indirect
+	   Contact:
+	    - URI: "MODBUS:RADout002-3"
+	      Power: *24VTRUE
+     - Description: CO2
+       Type: Controller
+       Domain: Air
+       Control: Direct
+       Contact:
+        - URI: "MODBUS:RADout003-1"
+          Power: *24VTRUE
+     - Description: HAF
+       Type: Controller
+       Domain: Air
+       Control: Direct
+       Contact:
+        - URI: "MODBUS:RADout003-2"
+          ControlType: Digital
+          Quantity: 12
+          Power:
+           Voltage: 110
+           AC: TRUE
+    Zone:
+     - ID: Rack1
+       Type: Rack
+       Length: 40
+       Width: 4
+       Height: 1.5
+       Zone:
+        - ID: Level1
+          Type: Level
+          Height: 1.5
+          Device:
+           - Description: Temperature
+             Type: Sensor
+             Domain: Air
+             Location: [10,20,1]
+             Delay: 10 #Expect a response 10 seconds after a request for temperature data
+             Contact:
+              URI: "MODBUS:RADin00012-1"
+              Type: Analog
+           - Description: Humidity
+             Domain: Air
+             Type: Sensor
+             Location: [10,20,1]
+             Delay: 10
+             Contact:
+              URI: "MODBUS:RADin00012-1"
+              Type: Analog
+           - Description: CO2
+             Type: Sensor
+             Domain: Air
+             Location: [10,20,1]
+             Delay: 10
+             Contact:
+              URI: "MODBUS:RADin00012-1"
+              Type: Analog
+           - Description: Dimmable LED Light
+             Make: Lumigrow
+             Model: Pro 650e LED
+             Type: Controller
+             Domain: Light
+             Control: Indirect
+             Contact:
+              - URI: "MODBUS:RADanalog00012-1"
+                ControlType: analog
+                Quantity: 10
+                Power:
+                 Voltage: 0-10
+                 AC: FALSE
+          Zone:
+           - ID: Tray1
+             Type: Tray
+             Length: 8
+             Width: 4
+             Height: .25
+             Device:
+              - Description: Irrigation
+                Control: Direct
+                Contact:
+                 URI: "MODBUS:RADout003-3"
+                 Power: *24VTRUE
