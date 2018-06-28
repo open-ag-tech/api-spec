@@ -1,7 +1,7 @@
 ## Example Document Snippets
 
 ```yaml
-/sensors:
+/light_sensors:
   get:
     description: Returns all sensors from the system that the user has access to
     responses:
@@ -13,7 +13,7 @@
               type: array
               items:
                 $ref: '#/components/schemas/Sensor'
-/sensors/{sensorId}:
+/light_sensors/{sensorId}:
   get:
    summary: Info for a specific sensor
    operationId: showSensorById
@@ -32,7 +32,9 @@
        content:
          application/json:
            schema:
-             $ref: "#/components/schemas/Sensors"
+             type: array
+             items:
+               $ref: "#/components/schemas/Sensors"
      default:
        description: unexpected error
        content:
@@ -40,14 +42,14 @@
            schema:
              $ref: "#/components/schemas/Error"  
 
-/sensors/{sensorId}/measurements:
+/light_sensors/{sensorId}/measurements:
   get:
     description: Returns spectrum measurements from a specific sensor
     parameters:
-      - name: format
+      - name: type
         in: query
         required: false
-        description: PPF or PPFD
+        description: ppf or ppfd, defaults to ppfd
         schema:
           type: string
     responses:
@@ -60,11 +62,86 @@
               items:
                 $ref: '#/components/schemas/SpectrumMeasurement'
 
+/zone/{zoneId}/sensors:
+  get:
+    description: Returns all sensors from a zone
+    responses:
+      '200':
+        description: A list of sensors.
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Sensor'
+
+light_sensors:
+  get:
+    description: Returns all sensors from a zone
+    responses:
+      '200':
+        description: A list of sensors.
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Sensor'
+
+light_fixtures:
+  get:
+    description: Returns all fixtures that a user has access to
+    responses:
+      '200':
+        description: A list of fixtures.
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Fixture'
+
+/light_fixtures/{fixtureId}:
+  get:
+    summary: Info for a specific fixture
+    operationId: showFixtureById
+    tags:
+      - fixtures
+    parameters:
+      - name: fixtureId
+        in: path
+        required: true
+        description: The id of the fixture to retrieve
+        schema:
+          type: string
+    responses:
+      '200':
+        description: Expected response to a valid request
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/Fixture"
+
+
+/light_fixtures/{fixtureId}/light_channels:
+  get:
+    description: Returns all channels from a fixture
+    responses:
+      '200':
+        description: A list of channels.
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Channel'
 ```
 
-### Example Schema
+## Example Schema
 
-Sensor
+### Sensor
 
 ```yaml
 type: object
@@ -79,13 +156,15 @@ properties:
     type: string
   location:
     ***TODO: LOCATION FORMAT*** general.md#location-data
+  info:
+    ***TODO: INFO FORMAT*** general.md#info-data
   age:
     type: integer
     format: int32
     minimum: 0
 ```
 
-Measurement
+### Measurement
 
 ```yaml
 type: object
@@ -121,289 +200,121 @@ properties:
     type: string
 ```
 
+### Fixture
+
+```yaml
+type: object
+required:
+- id
+- status
+properties:
+  id:
+    description: Unique id of the fixture
+    type: string
+  name:
+    type: string
+  status:
+    description: The active state of the light ('on' or 'off')
+    type: string
+```
+
+```yaml
+type: object
+required:
+- id
+properties:
+  name:
+    type: string
+  status:
+    description: The active state of the light ('on' or 'off')
+    type: string
+```
+
+### Channel
+
+```yaml
+type: object
+required:
+- id
+properties:
+  id:
+    description: Unique id of the channel
+  lo-color:
+    description: Lower boundary of the frequency range for a color channel
+    format: ***TODO FORMAT nm***
+  hi-color:
+    description: Upper boundary of the frequency range for a color channel
+    format: ***TODO FORMAT nm***
+  cct:
+    description: Color temperature for a white channel
+    format: ***TODO FORMAT K (Kelvin)***
+  intensity:
+    description: Light intensity
+    format: ***TODO FORMAT %***
+```
+
+
 ## Example requests
 
-**Retrieving spectrum measurements as PPF**  
-```
-GET http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/ppf  
-```
-Returns [Light PPF](lights.md#light-ppf)  
+### Sensors
 
-**Retrieving spectrum measurements as PPFD**  
+**Retrieving sensor information**
 ```
-GET http://[domain:port]/agroapi/[version]/lights/sensors/[sensorid]/ppfd  
+GET http://[domain:port]/agroapi/[version]/light_sensors/[sensorid]
 ```
-Returns [Light PPFD](lights.md#light-ppfd)  
 
-### Talking to all sensors
-**Retrieving ID information**  
+**Updating sensor information**
 ```
-GET http://[domain:port]/agroapi/[version]/lights/sensors/info  
+PUT http://[domain:port]/agroapi/[version]/light_sensors/[sensorid]
 ```
-Returns an array of [Info](general.md#info-data)  
 
-**Sending ID information**  
+**Retrieving spectrum measurements as PPF**
 ```
-POST http://[domain:port]/agroapi/[version]/lights/sensors/info  
+GET http://[domain:port]/agroapi/[version]/light_sensors/[sensorid]/measurements?type=ppf
 ```
-Sends an array of [Info](general.md#info-data)  
 
-**Retrieving version information**  
+**Retrieving spectrum measurements as PPFD**
 ```
-GET http://[domain:port]/agroapi/[version]/lights/sensors/version  
+GET http://[domain:port]/agroapi/[version]/light_sensors/[sensorid]/measurements?type=ppf
 ```
-Returns an array of [Version](general.md#version-data)  
 
-**Retrieving location information**  
+**Retrieving information for all sensors**
 ```
-GET http://[domain:port]/agroapi/[version]/lights/sensors/location  
+GET http://[domain:port]/agroapi/[version]/light_sensors
 ```
-Returns an array of [Location](general.md#location-data)  
 
-**Sending location information**  
+**Retrieving information for all sensors in a zone**
 ```
-POST http://[domain:port]/agroapi/[version]/lights/sensors/location  
+GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/light_sensors
 ```
-Sends an array of [Location](general.md#location-data)  
-
-**Retrieving spectrum measurements as PPF**  
-```
-GET http://[domain:port]/agroapi/[version]/lights/sensors/ppf  
-```
-Returns an array of [Light PPF](lights.md#light-ppf)  
-
-**Retrieving spectrum measurements as PPFD**  
-```
-GET http://[domain:port]/agroapi/[version]/lights/sensors/ppfd  
-```
-Returns an array of [Light PPFD](lights.md#light-ppfd)  
-
-### Talking to all sensors in a zone
-**Retrieving ID information**  
-```
-GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/sensors/info  
-```
-Returns an array of [Info](general.md#info-data)  
-
-**Sending ID information**  
-```
-POST http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/sensors/info  
-```
-Sends an array of [Info](general.md#info-data)  
-
-**Retrieving version information**  
-```
-GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/sensors/version  
-```
-Returns an array of [Version](general.md#version-data)  
-
-**Retrieving location information**  
-```
-GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/sensors/location  
-```
-Returns an array of [Location](general.md#location-data)  
-
-**Sending location information**  
-```
-POST http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/sensors/location  
-```
-Sends an array of [Location](general.md#location-data)  
-
-**Retrieving spectrum measurements as PPF**  
-```
-GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/sensors/ppf  
-```
-Returns an array of [Light PPF](lights.md#light-ppf)  
-
-**Retrieving spectrum measurements as PPFD**  
-```
-GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/sensors/ppfd  
-```
-Returns an array of [Light PPFD](lights.md#light-ppfd)  
 
 
+### Fixtures
 
-## Fixtures
-### Talking to one fixture
-**Retrieving ID information**  
+**Retrieving information for all fixtures**
 ```
-GET http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/info
+GET http://[domain:port]/agroapi/[version]/light_fixtures
 ```
-Returns [Info](general.md#info-data)  
 
-**Sending ID information**  
+**Retrieving information for a fixture**
 ```
-POST http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/info
+GET http://[domain:port]/agroapi/[version]/light_fixtures/[fixtureid]
 ```
-Sends [Info](general.md#info-data)  
 
-**Retrieving version information**  
+**Updating information for a fixture**
 ```
-GET http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/version  
+PUT http://[domain:port]/agroapi/[version]/light_fixtures/[fixtureid]
 ```
-Returns [Version](general.md#version-data)  
 
-**Retrieving location information**  
-```
-GET http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/location
-```
-Returns [Location](general.md#location-data)  
 
-**Sending location information**  
-```
-POST http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/location
-```
-Sends [Location](general.md#location-data)  
+### Channels
 
-**Retrieving configuration information**  
+**Retrieving channel configurations for a fixture**
 ```
-GET http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/config
+GET http://[domain:port]/agroapi/[version]/light_fixtures/[fixture_id]/light_channels
 ```
-Returns [Fixture Configuration](lights.md#fixture-configuration)  
 
-**Sending configuration information**  
+**Updating channel configuration**
 ```
-POST http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/config
+PUT http://[domain:port]/agroapi/[version]/light_channels/[channel_id]
 ```
-Sends [Fixture Configuration](lights.md#fixture-configuration)  
-
-**Retrieving power state information**  
-```
-GET http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/power
-```
-Returns [Fixture Power](lights.md#fixture-power)  
-
-**Sending power state information**  
-```
-POST http://[domain:port]/agroapi/[version]/lights/fixtures/[fixtureid]/power
-```
-Sends [Fixture Power](lights.md#fixture-power)  
-
-### Talking to all fixtures
-**Retrieving ID information**  
-```
-GET http://[domain:port]/agroapi/[version]/lights/fixtures/info
-```
-Returns an array of [Info](general.md#info-data)  
-
-**Sending ID information**  
-```
-POST http://[domain:port]/agroapi/[version]/lights/fixtures/info
-```
-Sends an array of [Info](general.md#info-data)  
-
-**Retrieving version information**  
-```
-GET http://[domain:port]/agroapi/[version]/lights/fixtures/version  
-```
-Returns an array of [Version](general.md#version-data)  
-
-**Retrieving location information**  
-```
-GET http://[domain:port]/agroapi/[version]/lights/fixtures/location
-```
-Returns an array of [Location](general.md#location-data)  
-
-**Sending location information**  
-```
-POST http://[domain:port]/agroapi/[version]/lights/fixtures/location
-```
-Sends an array of [Location](general.md#location-data)  
-
-**Retrieving configuration information**  
-```
-GET http://[domain:port]/agroapi/[version]/lights/fixtures/config
-```
-Returns an array of [Fixture Configuration](lights.md#fixture-configuration)  
-
-**Sending configuration information**  
-```
-POST http://[domain:port]/agroapi/[version]/lights/fixtures/config
-```
-Sends an array of [Fixture Configuration](lights.md#fixture-configuration)  
-
-**Retrieving power state information**  
-```
-GET http://[domain:port]/agroapi/[version]/lights/fixtures/power
-```
-Returns an array of [Fixture Power](lights.md#fixture-power)  
-
-**Sending power state information**  
-```
-POST http://[domain:port]/agroapi/[version]/lights/fixtures/power
-```
-Sends an array of [Fixture Power](lights.md#fixture-power)  
-
-### Talking to all fixtures in a zone
-**Retrieving ID information**  
-```
-GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/info
-```
-Returns an array of [Info](general.md#info-data)  
-
-**Sending ID information**  
-```
-POST http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/info
-```
-Sends an array of [Info](general.md#info-data)  
-
-**Retrieving version information**  
-```
-GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixture/[fixtureid]/version  
-```
-Returns an array of [Version](general.md#version-data)  
-
-**Retrieving location information**  
-```
-GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/location
-```
-Returns an array of [Location](general.md#location-data)  
-
-**Sending location information**  
-```
-POST http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/location
-```
-Sends an array of [Location](general.md#location-data)  
-
-**Retrieving configuration information**  
-```
-GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/config
-```
-Returns an array of [Fixture Configuration](lights.md#fixture-configuration)  
-
-**Sending configuration information**  
-```
-POST http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/config
-```
-Sends an array of [Fixture Configuration](lights.md#fixture-configuration)  
-
-**Retrieving power state information**  
-```
-GET http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/power
-```
-Returns an array of [Fixture Power](lghts.md#fixture-power)  
-
-**Sending power state information**  
-```
-POST http://[domain:port]/agroapi/[version]/zones/[zoneid]/lights/fixtures/power
-```
-Sends an array of [Fixture Power](lghts.md#fixture-power)  
-
-### Fixture Configuration
-| Name     | Description                     | Unit  |
-| -------- | ------------------------------- | ----- |
-| id       | Unique id of the fixture        | uid   |
-| channels | array of channel configurations | [Channel Configuration](lights.md#channel-configuration) |
-### Channel Configuration
-| Name        | Description                                               | Unit       |
-| ----------- | --------------------------------------------------------- | ---------- |
-| id          | Unique id of the channel                                  | uid        |
-| lo-color    | Lower boundary of the frequency range for a color channel | nm         |
-| hi-color    | Upper boundary of the frequency range for a color channel | nm         |
-| cct         | Color temperature for a white channel                     | K (Kelvin) |
-| intensity   | Light intensity                                           | %          |
-### Fixture Power
-| Name   | Description                    | Unit          |
-| ------ | ------------------------------ | ------------- |
-| id     | Unique id of the fixture       | uid           |
-| status | The active state of the lights | "on" or "off" |
