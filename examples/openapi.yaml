@@ -1,0 +1,102 @@
+openapi: "3.0.0"
+info:
+  version: 0.0.2
+  title:
+  description: A sample openapi.yaml document. Note that each host must have its own version of this document. It describes what the host can do
+  termsOfService: http://url.to.terms/ofservice
+  contact:
+    name: open-ag-tech
+    email: shouldwegetadomain@probably.com
+    url: http://probably.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: http://cloud.url.com/api #if a cloud based response - where do you send requests?
+  - url: http://192.168.1.1/api #if a local network based response
+paths:
+  /path:
+    get:
+      description: |
+        Change /path to /sensors or some other group name. A query to this path will execute the below operationId.
+        Parameters may contain details, like Zone. We could insist on path based restrictions, but ?zone=Room1 also
+        works. Perhaps we should leave this up to the implementer, so long as this field is accurate?
+      operationId: Operationame
+      parameters:
+        - name: requiredParameter
+          in: query
+          description:
+          required: true
+          style: form
+          schema:
+            type: string
+       - name: tags
+          in: query
+          description: tags to filter by
+          required: false
+          style: form
+          schema:
+            type: array
+            items:
+              type: string
+        - name: limit
+          in: query
+          description: maximum number of results to return
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Sensor list response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Path'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /path/{id}:
+    get:
+      description: Single item response
+      operationId:
+      parameters:
+        - name: id
+          in: path
+          description:
+          required:
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: pet response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Path'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Path:
+      required:
+        - id
+        - otherAttribute
+      properties:
+        id:
+          type: integer
+          format: int64
+        otherAttribute:
+          type: string
+        optionalAttribute:
+          type: string
