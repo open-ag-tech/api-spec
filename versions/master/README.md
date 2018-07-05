@@ -13,7 +13,17 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 There are specific concepts that all participants in this open API must support in order to make interaction possible. Each of these concepts should be driven by factory configurations or by on-site configurations made by the customer or a professional integrator.  
 
-Compliance with the Open-Agtech API requires adherence to the OpenAPI Specification (currently [3.0.1](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md)). In addition, there are several principles that account for the needs of our industry.
+Compliance with the Open-Agtech API requires adherence to the OpenAPI Specification (currently [3.0.1](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md)).
+
+# OpenAPI Specification
+
+For convenience, we have included some of the more important and relevant concepts of the OpenAPI spec. While the complete spec is not located here, these concepts will provide a foundation for building a compliant API.
+
+### Open AgTech API Document
+
+The Open AgTech API Document describes the structure of a compliant API. Documents MUST be in YAML or JSON format and SHOULD be accessible to consumers of the API. You can read more about the structure of the document at the [Open API Specification](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#document-structure), or see examples (**TODO: EXAMPLES**)
+
+In addition, there are several principles that account for the needs of our industry.
 
 # URL construction
 
